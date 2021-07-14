@@ -1,0 +1,32 @@
+import praw
+from gtts import gTTS
+from PIL import Image
+import textwrap
+import random
+
+
+reddit = praw.Reddit(client_id='inqKlcP85Mqdy5ack2UVZQ',
+                     client_secret='kj8BuCWeVvoI0sYhWZlA4GG0ymVNlQ',
+                     username='Friendly-Orange-5033',
+                     password='Poopface%1',
+                     user_agent='Anything you want')
+subreddit = reddit.subreddit('HamRadio')
+hot_confessions = subreddit.hot(limit=50)
+m=0
+for submission in hot_confessions:
+  
+  x=(submission.selftext.lower())
+  c= (textwrap.fill(submission.title,50) + ".\n" + "\n" + textwrap.fill(x,50))
+
+  print(c)
+
+
+  g = gTTS(c, lang = 'en', tld = 'com.au')
+  
+  
+  
+  g.save(f'reddit file {m}.mp3')
+  u=input("Next Story?")
+  m=m+1
+  while u != "yes" or "Yes" or "yea" or "Yea":
+    y=0
