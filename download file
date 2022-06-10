@@ -11,9 +11,9 @@ reddit = praw.Reddit(client_id='inqKlcP85Mqdy5ack2UVZQ',
                      password='Poopface%1',
                      user_agent='Anything you want')
 subreddit = reddit.subreddit('HamRadio')
-hot_confessions = subreddit.hot(limit=50)
+confessions = subreddit.hot(limit=50)
 m=0
-for submission in hot_confessions:
+for submission in confessions:
   
   x=(submission.selftext.lower())
   c= (textwrap.fill(submission.title,50) + ".\n" + "\n" + textwrap.fill(x,50))
